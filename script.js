@@ -102,9 +102,7 @@
       return /^(\+?972|0)\d{8,9}$/.test(digits);
     }
 
-    function validateEmail(value) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-    }
+    var WHATSAPP_NUMBER = '972542366997';
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -112,7 +110,6 @@
 
       var name = form.elements['name'];
       var phone = form.elements['phone'];
-      var email = form.elements['email'];
       var message = form.elements['message'];
 
       ok = setError(name, name.value.trim() ? '' : 'נא להזין שם מלא') && ok;
@@ -123,23 +120,25 @@
         ok = setError(phone, validatePhone(phone.value) ? '' : 'מספר טלפון לא תקין') && ok;
       }
 
-      // Email is optional — validate only if filled.
-      if (email.value.trim()) {
-        ok = setError(email, validateEmail(email.value) ? '' : 'כתובת אימייל לא תקינה') && ok;
-      } else {
-        setError(email, '');
-      }
-
       ok = setError(message, message.value.trim() ? '' : 'נא להזין הודעה') && ok;
 
-      if (ok) {
-        form.reset();
-        if (success) {
-          success.hidden = false;
-          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          setTimeout(function () { success.hidden = true; }, 6000);
-        }
+      if (!ok) return;
+
+      var waText =
+        'היי, פניתי דרך האתר.\n\n' +
+        'שם: ' + name.value.trim() + '\n' +
+        'טלפון: ' + phone.value.trim() + '\n\n' +
+        message.value.trim();
+
+      var waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(waText);
+      window.open(waUrl, '_blank', 'noopener');
+
+      if (success) {
+        success.hidden = false;
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(function () { success.hidden = true; }, 8000);
       }
+      form.reset();
     });
 
     // Clear an error as soon as the user edits the field.

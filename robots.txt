@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.asbest-piruk.co.il/sitemap.xml
+Sitemap: https://www.asbestor.com/sitemap.xml

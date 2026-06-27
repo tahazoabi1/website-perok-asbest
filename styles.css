@@ -272,9 +272,23 @@ ul { list-style: none; }
   font-weight: 700;
   font-size: .95rem;
 }
-.hero-bg { border: 0; border-radius: 0; background:
-  repeating-linear-gradient(45deg, #20293a 0 16px, #243042 16px 32px); }
+.hero-bg {
+  border: 0;
+  border-radius: 0;
+  background-color: #20293a;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .hero-bg::after { color: rgba(255,255,255,.18); }
+
+/* Real image backgrounds on these slots */
+.about-img,
+.project-img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 /* ---------- About ---------- */
 .about-grid {

@@ -6,6 +6,14 @@
 (function () {
   'use strict';
 
+  /* ---------- Home links: always scroll to true top ---------- */
+  document.querySelectorAll('a[href="#top"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
   /* ---------- Mobile nav toggle ---------- */
   var toggle = document.getElementById('navToggle');
   var nav = document.getElementById('mainNav');

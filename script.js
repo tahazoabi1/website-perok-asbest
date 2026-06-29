@@ -74,7 +74,7 @@
     requestAnimationFrame(step);
   }
 
-  var counters = document.querySelectorAll('.stat-num');
+  var counters = document.querySelectorAll('.stat-num[data-count]');
   if ('IntersectionObserver' in window && counters.length) {
     var countIO = new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (entry) {

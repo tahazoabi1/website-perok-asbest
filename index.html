@@ -337,8 +337,11 @@
           <textarea id="message" name="message" rows="4" placeholder="במה נוכל לעזור?" required></textarea>
           <span class="error" data-for="message"></span>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">שליחה דרך וואטסאפ 💬</button>
-        <p class="form-success" id="formSuccess" hidden>פתחנו עבורכם את WhatsApp עם ההודעה מוכנה — לחצו שלח כדי להשלים את הפנייה. 🙏</p>
+        <div class="form-submit-row">
+          <button type="submit" name="target" value="whatsapp" class="btn btn-primary btn-block"><span>💬</span> שליחה בוואטסאפ</button>
+          <button type="submit" name="target" value="email" class="btn btn-amber btn-block"><span>✉️</span> שליחה באימייל</button>
+        </div>
+        <p class="form-success" id="formSuccess" hidden>פתחנו עבורכם את ההודעה — לחצו שלח כדי להשלים את הפנייה. 🙏</p>
       </form>
     </div>
   </section>

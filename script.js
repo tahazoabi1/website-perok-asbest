@@ -111,6 +111,7 @@
     }
 
     var WHATSAPP_NUMBER = '972542366997';
+    var EMAIL_ADDRESS = 'hamze18891@gmail.com';
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -132,16 +133,34 @@
 
       if (!ok) return;
 
-      var waText =
-        'היי, פניתי דרך האתר.\n\n' +
-        'שם: ' + name.value.trim() + '\n' +
-        'טלפון: ' + phone.value.trim() + '\n\n' +
-        message.value.trim();
+      var nameVal = name.value.trim();
+      var phoneVal = phone.value.trim();
+      var msgVal = message.value.trim();
+      var target = (e.submitter && e.submitter.value) || 'whatsapp';
 
-      var waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(waText);
-      window.open(waUrl, '_blank', 'noopener');
+      var url, successText;
+      if (target === 'email') {
+        var subject = 'פנייה חדשה מהאתר — ' + nameVal;
+        var body =
+          'שם: ' + nameVal + '\n' +
+          'טלפון: ' + phoneVal + '\n\n' +
+          msgVal;
+        url = 'mailto:' + EMAIL_ADDRESS + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+        successText = 'פתחנו עבורכם את אפליקציית האימייל עם ההודעה מוכנה — לחצו שלח כדי להשלים את הפנייה. 🙏';
+        window.location.href = url;
+      } else {
+        var waText =
+          'היי, פניתי דרך האתר.\n\n' +
+          'שם: ' + nameVal + '\n' +
+          'טלפון: ' + phoneVal + '\n\n' +
+          msgVal;
+        url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(waText);
+        successText = 'פתחנו עבורכם את WhatsApp עם ההודעה מוכנה — לחצו שלח כדי להשלים את הפנייה. 🙏';
+        window.open(url, '_blank', 'noopener');
+      }
 
       if (success) {
+        success.textContent = successText;
         success.hidden = false;
         success.scrollIntoView({ behavior: 'smooth', block: 'center' });
         setTimeout(function () { success.hidden = true; }, 8000);

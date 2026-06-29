@@ -440,6 +440,7 @@ ul { list-style: none; }
 .field.invalid input,
 .field.invalid textarea { border-color: #e2483b; background: #fff6f5; }
 .error { color: #e2483b; font-size: .85rem; min-height: 1em; font-weight: 500; }
+.form-submit-row { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
 .form-success {
   background: #e7f7ec; color: #1b7a3d;
   border: 1px solid #b7e6c6;

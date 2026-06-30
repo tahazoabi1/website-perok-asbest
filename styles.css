@@ -100,13 +100,19 @@ ul { list-style: none; }
   color: #fff;
 }
 .logo-mark {
-  display: inline-grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  background: var(--amber);
-  border-radius: 10px;
-  font-size: 1.1rem;
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  background: #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.logo-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 .logo-text { letter-spacing: .3px; }
 

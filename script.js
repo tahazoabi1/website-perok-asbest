@@ -163,9 +163,14 @@
         success.textContent = successText;
         success.hidden = false;
         success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        setTimeout(function () { success.hidden = true; }, 8000);
       }
       form.reset();
+
+      // Navigate to thank-you page so Google Ads can count the conversion.
+      // Small delay lets the WhatsApp/email tab open first.
+      setTimeout(function () {
+        window.location.href = '/thank-you/';
+      }, 800);
     });
 
     // Clear an error as soon as the user edits the field.
